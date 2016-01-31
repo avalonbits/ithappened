@@ -16,11 +16,7 @@
                 <a href="#" class="brand-logo center">It Happened</a>
             </div>
         </nav>
-        <div class="container">
-            <div class="row">
-                <div id="happening-card" class="col s12 m12 l6">
-                </div>
-            </div>
+        <div id="happening-container" class="container">
         </div>
 
       <!--Import jQuery before materialize.js-->
@@ -29,7 +25,7 @@
       <script type="text/javascript" src="js/elm.js"></script>
     </body>
   <script type="text/javascript">
-    var happeningDiv = document.getElementById('happening-card');
+    var happeningDiv = document.getElementById('happening-container');
     Elm.embed(Elm.Main, happeningDiv);
   </script>
 
