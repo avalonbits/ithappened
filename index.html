@@ -16,16 +16,24 @@
                 <a href="#" class="brand-logo center">It Happened</a>
             </div>
         </nav>
-        <div id="happening-container" class="container">
-        </div>
-
+		<div id="entry-point">
+        	<div id="happening-list" class="container">
+        	</div>
+        	<div class="container">
+        		<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+  	  				<a class="btn-floating btn-large red">
+      					<i class="large material-icons">+</i>
+    				</a>
+  				</div>
+			</div>
+		</div>
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
       <script type="text/javascript" src="js/elm.js"></script>
     </body>
   <script type="text/javascript">
-    var happeningDiv = document.getElementById('happening-container');
+    var happeningDiv = document.getElementById('happening-list');
     Elm.embed(Elm.Main, happeningDiv);
   </script>
 
