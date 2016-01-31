@@ -1,2 +1,2 @@
-It Hapenned
+It Happened
 ===========
