@@ -1,5 +1,6 @@
 module HappeningList where
 
+import FixedButton
 import Happening
 import Nav
 import Html exposing (..)
@@ -12,6 +13,7 @@ type alias Model =
     { happenings : List (ID, Happening.Model)
     , nextID : ID
     , nav : Nav.Model
+    , addBtn : FixedButton.Model
     }
 
 type alias ID = Int
@@ -21,6 +23,7 @@ init =
     { happenings = []
     , nextID = 0
     , nav = Nav.init
+    , addBtn = FixedButton.init "+"
     }
 
 
@@ -46,13 +49,15 @@ update action model =
 view : Signal.Address Action -> Model -> Html
 view address model =
     let items = List.map (viewHappening address) model.happenings
+        addBtn = FixedButton.view address model.addBtn
         nav = Nav.view  address model.nav
         insert = button [ onClick address Insert ] [ text "Add" ]
     in
         div []
         [ nav,
           (div [ attribute "class" "container" ]
-            [  insert, (div [ attribute "class" "row" ] items) ])
+            [  insert, (div [ attribute "class" "row" ] items) ]),
+          (div [ attribute "class" "container" ] [ addBtn ])
         ]
 
 viewHappening : Signal.Address Action -> (ID, Happening.Model) -> Html
