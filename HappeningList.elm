@@ -49,14 +49,12 @@ update action model =
 view : Signal.Address Action -> Model -> Html
 view address model =
     let items = List.map (viewHappening address) model.happenings
-        addBtn = FixedButton.view address model.addBtn
+        addBtn = FixedButton.view (Signal.forwardTo address (always Insert)) model.addBtn
         nav = Nav.view  address model.nav
-        insert = button [ onClick address Insert ] [ text "Add" ]
     in
         div []
         [ nav,
-          (div [ attribute "class" "container" ]
-            [  insert, (div [ attribute "class" "row" ] items) ]),
+          (div [ attribute "class" "container" ] [ (div [ attribute "class" "row" ] items) ]),
           (div [ attribute "class" "container" ] [ addBtn ])
         ]
 
