@@ -12,7 +12,6 @@ import Html.Events exposing (onClick)
 type alias Model =
     { happenings : List (ID, Happening.Model)
     , nextID : ID
-    , nav : Nav.Model
     , addBtn : FixedButton.Model
     }
 
@@ -22,7 +21,6 @@ init : Model
 init =
     { happenings = []
     , nextID = 0
-    , nav = Nav.init
     , addBtn = FixedButton.init "+"
     }
 
@@ -50,12 +48,10 @@ view : Signal.Address Action -> Model -> Html
 view address model =
     let items = List.map (viewHappening address) model.happenings
         addBtn = FixedButton.view (Signal.forwardTo address (always Insert)) model.addBtn
-        nav = Nav.view  address model.nav
     in
         div []
-        [ nav,
-          (div [ attribute "class" "container" ] [ (div [ attribute "class" "row" ] items) ]),
-          (div [ attribute "class" "container" ] [ addBtn ])
+        [ (div [ attribute "class" "container" ] [ (div [ attribute "class" "row" ] items) ]),
+          addBtn
         ]
 
 viewHappening : Signal.Address Action -> (ID, Happening.Model) -> Html

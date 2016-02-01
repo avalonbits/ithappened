@@ -1,4 +1,4 @@
-module Nav (Model, init, view, update) where
+module Nav (Action, Model, init, view, update) where
 
 import Html exposing (..)
 import Html.Attributes exposing (attribute)
@@ -13,12 +13,15 @@ init = "It Happened"
 
 
 -- UPDATE
-update : x -> Model -> Model
+
+type Action = Nothing
+
+update : Action -> Model -> Model
 update x model = model
 
 
 -- VIEW
-view : x -> Model -> Html
+view : Signal.Address Action -> Model -> Html
 view address model =
     nav []
     [ div [ attribute "class" "nav-wrapper" ]

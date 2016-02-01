@@ -1,4 +1,4 @@
-import HappeningList exposing (init, update, view)
+import App exposing (init, update, view)
 import StartApp.Simple exposing (start)
 
 main = start
