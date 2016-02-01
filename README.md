@@ -11,7 +11,7 @@ and mobile.
 For material design I am using the excelent [MaterializeCSS][2] css + js library.
 
 
-# Building and running
+## Building and running
 In order to build It Happened, make sure you've have [elm installed][3]. Then
 do the following:
 
@@ -22,7 +22,7 @@ $ elm-make install Main.elm --output=js/elm.js
 $ python -m SimpleHTTPServer
 ```
 
-This will create the app and start serving it. Go to http://localhost:8000 and
+This will create the app and start serving it. Go to [http://localhost:8000] and
 you should be able to use it.
 
 Have fun!
