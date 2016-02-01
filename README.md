@@ -22,7 +22,7 @@ $ elm-make install Main.elm --output=js/elm.js
 $ python -m SimpleHTTPServer
 ```
 
-This will create the app and start serving it. Go to [http://localhost:8000] and
+This will create the app and start serving it. Go to <http://localhost:8000> and
 you should be able to use it.
 
 Have fun!
