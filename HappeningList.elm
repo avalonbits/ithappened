@@ -1,6 +1,7 @@
 module HappeningList where
 
 import Happening
+import Nav
 import Html exposing (..)
 import Html.Attributes exposing (attribute)
 import Html.Events exposing (onClick)
@@ -10,6 +11,7 @@ import Html.Events exposing (onClick)
 type alias Model =
     { happenings : List (ID, Happening.Model)
     , nextID : ID
+    , nav : Nav.Model
     }
 
 type alias ID = Int
@@ -18,6 +20,7 @@ init : Model
 init =
     { happenings = []
     , nextID = 0
+    , nav = Nav.init
     }
 
 
@@ -43,9 +46,14 @@ update action model =
 view : Signal.Address Action -> Model -> Html
 view address model =
     let items = List.map (viewHappening address) model.happenings
+        nav = Nav.view  address model.nav
         insert = button [ onClick address Insert ] [ text "Add" ]
     in
-        div [] [ insert, (div [ attribute "class" "row" ] items) ]
+        div []
+        [ nav,
+          (div [ attribute "class" "container" ]
+            [  insert, (div [ attribute "class" "row" ] items) ])
+        ]
 
 viewHappening : Signal.Address Action -> (ID, Happening.Model) -> Html
 viewHappening address (id, model) =
