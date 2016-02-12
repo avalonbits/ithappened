@@ -1,7 +1,7 @@
 module Happening (Action,  Model, init, update, view) where
 
 import Html exposing (..)
-import Html.Attributes exposing (attribute)
+import Html.Attributes exposing (..)
 import Time exposing (Time)
 
 -- MODEL
@@ -33,15 +33,15 @@ update action model = model
 -- VIEW
 view : x -> Model -> Html
 view address model =
-    div [ attribute "class" "col s12 m12 l6" ]
-    [ div [ attribute "class" "card blue-grey darken-1" ]
-        [ div [ attribute "class" "card-content white-text" ]
-            [ span [ attribute "class" "card-title" ] [ text model.title]
+    div [ class "col s12 m12 l6" ]
+    [ div [ class "card blue-grey darken-1" ]
+        [ div [ class "card-content white-text" ]
+            [ span [ class "card-title" ] [ text model.title]
             , p [] [ text model.description ]
             ]
-        , div [ attribute "class" "card-action" ]
-            [ a [ attribute "href" "#"] [ text "Delete" ]
-            , a [ attribute "href" "#"] [ text "Again" ]
+        , div [ class "card-action" ]
+            [ a [ href "#"] [ text "Delete" ]
+            , a [ href "#"] [ text "Again" ]
             ]
         ]
     ]

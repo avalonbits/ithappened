@@ -4,7 +4,7 @@ import FixedButton
 import Happening
 import Nav
 import Html exposing (..)
-import Html.Attributes exposing (attribute)
+import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 
 -- MODEL
@@ -50,7 +50,7 @@ view address model =
         addBtn = FixedButton.view (Signal.forwardTo address (always Insert)) model.addBtn
     in
         div []
-        [ (div [ attribute "class" "container" ] [ (div [ attribute "class" "row" ] items) ]),
+        [ (div [ class "container" ] [ (div [ class "row" ] items) ]),
           addBtn
         ]
 

@@ -1,7 +1,7 @@
 module Nav (Action, Model, init, view, update) where
 
 import Html exposing (..)
-import Html.Attributes exposing (attribute)
+import Html.Attributes exposing (..)
 
 
 -- MODEL
@@ -24,8 +24,8 @@ update x model = model
 view : Signal.Address Action -> Model -> Html
 view address model =
     nav []
-    [ div [ attribute "class" "nav-wrapper" ]
-        [ a [ (attribute "href" "#"), (attribute "class" "brand-logo center")]
+    [ div [ class "nav-wrapper" ]
+        [ a [ (href "#"), (class "brand-logo center")]
             [ text model ]
         ]
     ]

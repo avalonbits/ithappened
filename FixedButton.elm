@@ -1,7 +1,7 @@
 module FixedButton (Model, init, view, update) where
 
 import Html exposing (..)
-import Html.Attributes exposing (attribute)
+import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 
 type alias Model = String
@@ -19,13 +19,19 @@ update x model = model
 
 view : Signal.Address () -> Model -> Html
 view address model =
-    div [ attribute "class" "container" ]
+    div [ class "container" ]
     [ div
-        [(attribute "class" "fixed-action-btn"),
-         (attribute "style" "bottom: 45px; right: 24px;"),
+        [(class "fixed-action-btn"),
+         style btnPosition,
          (onClick address ())
         ]
-        [ a [ attribute "class" "btn-floating btn-large red" ]
-            [ i [ attribute "class" "large material-icons" ] [ text model ] ]
+        [ a [ class "btn-floating btn-large red" ]
+            [ i [ class "large material-icons" ] [ text model ] ]
         ]
+    ]
+
+btnPosition : List (String, String)
+btnPosition =
+    [ ("bottom", "45px")
+    , ("right", "24px")
     ]
