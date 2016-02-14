@@ -1,4 +1,4 @@
-module Happening (Model, init, view) where
+module Happening (Model, Action, init, view, update) where
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -22,8 +22,25 @@ init title description =
     }
 
 
+-- UPDATE
+
+type Action
+    = NoOp
+    | Modify String String
+
+update : Action -> Model -> Model
+update action model =
+    case action of
+        NoOp ->
+            model
+        Modify title description ->
+            { model |
+                title = title,
+                description = description
+            }
+
 -- VIEW
-view : x -> Model -> Html
+view : Signal.Address Action -> Model -> Html
 view address model =
     div [ class "col s12 m12 l6" ]
     [ div [ class "card blue-grey darken-1" ]
