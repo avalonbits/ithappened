@@ -1,4 +1,4 @@
-module FixedButton (Model, init, view, update) where
+module FixedButton (Model, init, view) where
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -9,21 +9,15 @@ type alias Model = String
 init : String -> Model
 init label = label
 
--- UPDATE
-
-update : x -> Model -> Model
-update x model = model
-
-
 -- VIEW
 
 view : Signal.Address () -> Model -> Html
 view address model =
     div [ class "container" ]
     [ div
-        [(class "fixed-action-btn"),
-         style btnPosition,
-         (onClick address ())
+        [ class "fixed-action-btn",
+          style btnPosition,
+          onClick address  ()
         ]
         [ a [ class "btn-floating btn-large red" ]
             [ i [ class "large material-icons" ] [ text model ] ]

@@ -1,4 +1,4 @@
-module Happening (Action,  Model, init, update, view) where
+module Happening (Model, init, view) where
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -20,14 +20,6 @@ init title description =
     , count = 0
     , last_time = 1400000000
     }
-
-
--- UPDATE
-
-type Action = Nothing
-
-update : x -> Model -> Model
-update action model = model
 
 
 -- VIEW
