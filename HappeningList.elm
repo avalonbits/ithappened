@@ -27,7 +27,9 @@ init =
 
 -- UPDATE
 
-type Action = Insert
+type Action
+    = Insert
+    | Modify ID Happening.Action
 
 update : Action -> Model -> Model
 update action model =
@@ -40,7 +42,13 @@ update action model =
                     happenings = newHappenings,
                     nextID = model.nextID +1
                 }
-
+        Modify id happeningAct ->
+            let updateHappening (happeningId, happeningModel) =
+                if id == happeningId
+                then (happeningId, Happening.update happeningAct happeningModel)
+                else (happeningId, happeningModel)
+            in
+                { model | happenings = List.map updateHappening model.happenings }
 
 -- VIEW
 
@@ -56,4 +64,4 @@ view address model =
 
 viewHappening : Signal.Address Action -> (ID, Happening.Model) -> Html
 viewHappening address (id, model) =
-    Happening.view address model
+    Happening.view (Signal.forwardTo address (Modify id)) model
