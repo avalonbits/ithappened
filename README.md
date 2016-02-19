@@ -16,8 +16,8 @@ In order to build It Happened, make sure you've have [elm installed][3]. Then
 do the following:
 
 ```bash
-$ git clone https://github.com/user/project.git
-$ cd project
+$ git clone https://github.com/avalonbits/ithappened.git
+$ cd ithappened
 $ elm-make install Main.elm --output=js/elm.js
 $ python -m SimpleHTTPServer
 ```
