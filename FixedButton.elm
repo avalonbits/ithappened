@@ -20,18 +20,16 @@ init label =
 
 view : Signal.Address () -> Model -> Html
 view address model =
-    div [ class "container" ]
-    [ div
-        [ class "fixed-action-btn"
-        , style btnPosition
-        ]
-        [ a [ class "modal-trigger waves-effect waves-light btn-floating btn-large red"
-            , href "#whatHappened"
-            ]
-            [ i [ class "large material-icons" ] [ text model.label ] ]
-        , IncludeHappeningModal.view address model.modal
-        ]
-    ]
+    div
+      [ class "fixed-action-btn"
+      , style btnPosition
+      ]
+      [ a [ class "modal-trigger waves-effect waves-light btn-floating btn-large red"
+          , href "#whatHappened"
+          ]
+          [ i [ class "large material-icons" ] [ text model.label ] ]
+      , IncludeHappeningModal.view address model.modal
+      ]
 
 btnPosition : List (String, String)
 btnPosition =
